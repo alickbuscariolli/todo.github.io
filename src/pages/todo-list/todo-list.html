@@ -1,0 +1,77 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="onNewActivity()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>To Do List</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content class="contentBg">
+  <ion-list>
+    <ion-item-group>
+      <ion-item-divider *ngIf="veryImpArray" color="light">Very Important</ion-item-divider>
+      <ion-item-sliding *ngFor="let veryImpActivity of veryImportantList">
+        <ion-item>
+          <h3 class="veryImp">{{ veryImpActivity.name }}</h3>
+          <p>{{ veryImpActivity.description }}</p>
+          <button ion-button clear item-end>View</button>
+        </ion-item>
+        <ion-item-options side="right">
+          <button ion-button color="primary">
+            <ion-icon name="text"></ion-icon>
+            Edit
+          </button>
+          <button ion-button color="danger" (click)="onDeleteActivity(veryImportantList, index)">
+            <ion-icon name="trash"></ion-icon>
+            Delete
+          </button>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-item-group>
+    <ion-item-group>
+      <ion-item-divider *ngIf="impArray" color="light">Important</ion-item-divider>
+      <ion-item-sliding *ngFor="let impActivity of importantList">
+        <ion-item>
+          <h3 class="imp">{{ impActivity.name }}</h3>
+          <p>{{ impActivity.description }}</p>
+          <button ion-button clear item-end>View</button>
+        </ion-item>
+        <ion-item-options side="right">
+          <button ion-button color="primary">
+            <ion-icon name="text"></ion-icon>
+            Edit
+          </button>
+          <button ion-button color="danger" (click)="onDeleteActivity(importantList, index)">
+            <ion-icon name="trash"></ion-icon>
+            Delete
+          </button>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-item-group>
+    <ion-item-group>
+      <ion-item-divider *ngIf="notImpArray" color="light">Not Important</ion-item-divider>
+      <ion-item-sliding *ngFor="let notImpActivity of notImportantList">
+        <ion-item>
+          <h3 class="notImp">{{ notImpActivity.name }}</h3>
+          <p>{{ notImpActivity.description }}</p>
+          <button ion-button clear item-end>View</button>
+        </ion-item>
+        <ion-item-options side="right">
+          <button ion-button color="primary">
+            <ion-icon name="text"></ion-icon>
+            Edit
+          </button>
+          <button ion-button color="danger" (click)="onDeleteActivity(notImportantList, index)">
+            <ion-icon name="trash"></ion-icon>
+            Delete
+          </button>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-item-group>
+  </ion-list>
+</ion-content>
